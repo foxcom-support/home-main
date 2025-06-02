@@ -2,27 +2,31 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>수업룸 입장</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-    input { font-size: 1.2em; padding: 8px; }
-    button { font-size: 1.2em; padding: 8px 20px; }
-  </style>
+  <title>언어 자동 감지</title>
+  <script>
+    window.onload = function() {
+      var lang = navigator.language || navigator.userLanguage;
+      lang = lang.substr(0,2).toLowerCase();
+
+      var links = {
+        'ko': 'https://foxcom.kr/',   // 한국어 노션 페이지
+        'en': 'https://foxcom.kr/',		 // 영어 노션 페이지
+        'ja': 'https://dns.foxcom.kr/',   // 일본어 노션 페이지
+        'zh': 'https://help.foxcom.kr/'    // 중국어 노션 페이지
+      };
+
+      if (links[lang]) {
+        window.location.replace(links[lang]);
+      } else {
+        window.location.replace('https://foxcom.kr/'); // 기본은 영어
+      }
+    };
+  </script>
 </head>
 <body>
-  <h2>수업룸 입장</h2>
-  <form id="joinForm">
-    <input type="text" id="room" placeholder="수업룸 번호 입력" required autofocus>
-    <button type="submit">입장</button>
-  </form>
-  <script>
-    document.getElementById('joinForm').onsubmit = function(e) {
-      e.preventDefault();
-      var room = document.getElementById('room').value.trim();
-      if (room) {
-        window.open('https://tester1.foxcom.kr/room/' + encodeURIComponent(room), '_blank');
-      }
-    }
-  </script>
+  <p>자동으로 언어 페이지로 이동 중입니다...</p>
 </body>
 </html>
+
+
+
