@@ -4,17 +4,58 @@
   <meta charset="UTF-8">
   <title>수업룸 입장</title>
   <style>
-    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-    input { font-size: 1.2em; padding: 8px; }
-    button { font-size: 1.2em; padding: 8px 20px; }
+    body { font-family: sans-serif; margin: 0; }
+    .modal-background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      min-height: 100vh;
+      min-width: 100vw;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.20);
+      padding: 40px 24px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    input {
+      font-size: 1.2em;
+      padding: 8px;
+      width: 70%;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 8px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #0074d9;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
+    }
   </style>
 </head>
 <body>
-  <h2>수업룸 입장</h2>
-  <form id="joinForm">
-    <input type="text" id="room" placeholder="수업룸 번호 입력" required autofocus>
-    <button type="submit">입장</button>
-  </form>
+  <div class="modal-background" id="modal-bg">
+    <div class="modal">
+      <h2>수업룸 입장</h2>
+      <form id="joinForm">
+        <input type="text" id="room" placeholder="수업룸 번호 입력" required autofocus>
+        <br>
+        <button type="submit">입장</button>
+      </form>
+    </div>
+  </div>
   <script>
     document.getElementById('joinForm').onsubmit = function(e) {
       e.preventDefault();
@@ -23,6 +64,14 @@
         window.open('https://tester1.foxcom.kr/room/' + encodeURIComponent(room), '_blank');
       }
     }
+    // ESC로 닫기 원할 시 아래 코드 추가
+    /*
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        document.getElementById('modal-bg').style.display = 'none';
+      }
+    });
+    */
   </script>
 </body>
 </html>
