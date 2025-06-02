@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>언어 자동 감지</title>
+  <script>
+    window.onload = function() {
+      var lang = navigator.language || navigator.userLanguage;
+      lang = lang.substr(0,2).toLowerCase();
+
+      var links = {
+        'ko': 'https://help.foxcom.kr/',   // 한국어 노션 페이지
+        'en': 'https://foxcom.kr/,   // 영어 노션 페이지
+        'ja': 'https://dns.foxcom.kr/',   // 일본어 노션 페이지
+        'zh': 'https://help.foxcom.kr/'    // 중국어 노션 페이지
+      };
+
+      if (links[lang]) {
+        window.location.replace(links[lang]);
+      } else {
+        window.location.replace('https://foxcom.kr/); // 기본은 영어
+      }
+    };
+  </script>
+</head>
+<body>
+  <p>자동으로 언어 페이지로 이동 중입니다...</p>
+</body>
+</html>
